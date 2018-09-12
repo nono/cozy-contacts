@@ -55,7 +55,7 @@
     "cozy-vcard": "0.2.18",
     "final-form": "4.8.1",
     "final-form-arrays": "1.0.4",
-    "lodash": "4.17.10",
+    "lodash": "4.17.11",
     "preact": "8.2.9",
     "preact-compat": "3.18.0",
     "react-final-form": "3.2.1",
