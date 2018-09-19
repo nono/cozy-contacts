@@ -3,18 +3,9 @@
 import 'styles'
 
 import React from 'react'
-import CozyClient, { CozyProvider } from 'cozy-client'
+import CozyClient from 'cozy-client'
 import { render } from 'react-dom'
-import { I18n } from 'cozy-ui/react/I18n'
-import App from 'components/App'
-
-const RootApp = props => (
-  <I18n lang={props.lang} dictRequire={lang => require(`locales/${lang}`)}>
-    <CozyProvider client={props.client}>
-      <App />
-    </CozyProvider>
-  </I18n>
-)
+import MainApp from './main.jsx'
 
 function getDataOrDefault(data, defaultData) {
   return /^\{\{\..*\}\}$/.test(data) ? defaultData : data
@@ -27,15 +18,7 @@ function init() {
   const { appName, appNamePrefix, iconPath, lang } = getValues(root.dataset)
   const client = initCozyClient(root.dataset.cozyDomain, root.dataset.cozyToken)
   initCozyBar({ appName, appNamePrefix, iconPath, lang })
-
-  if (module.hot) {
-    module.hot.accept('components/App', () => {
-      return requestAnimationFrame(() => {
-        render(<RootApp client={client} lang={lang} />, root)
-      })
-    })
-  }
-  render(<RootApp client={client} lang={lang} />, root)
+  render(<MainApp client={client} lang={lang} />, root)
 }
 
 /**

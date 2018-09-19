@@ -11,7 +11,12 @@ ContactHeaderRow.propTypes = {
 
 const ContactsList = props => {
   if (props.contacts.length === 0) {
-    return <ContactsEmptyList displayImportation={props.displayImportation} />
+    return (
+      <div>
+        eeee
+        <ContactsEmptyList displayImportation={props.displayImportation} />
+      </div>
+    )
   }
   const sortedContacts = [...props.contacts].sort(sortLastNameFirst)
   const categorizedContacts = sortedContacts.reduce((acc, contact) => {
